@@ -1,0 +1,99 @@
+{
+    "info": {
+      "name": "Menu Management API",
+      "_postman_id": "12345678-1234-5678-1234-567812345678",
+      "description": "API Collection for managing categories, subcategories, and items in the menu.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Create Category",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"Beverages\",\n  \"image\": \"https://example.com/image.jpg\",\n  \"description\": \"Drinks and refreshments\",\n  \"taxApplicable\": true,\n  \"tax\": 10,\n  \"taxType\": \"percentage\"\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/api/categories",
+            "host": ["{{base_url}}"],
+            "path": ["api", "categories"]
+          }
+        }
+      },
+      {
+        "name": "Get All Categories",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "{{base_url}}/api/categories",
+            "host": ["{{base_url}}"],
+            "path": ["api", "categories"]
+          }
+        }
+      },
+      {
+        "name": "Create Subcategory",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"Cold Drinks\",\n  \"image\": \"https://example.com/image.jpg\",\n  \"description\": \"Cold beverages\",\n  \"taxApplicable\": true,\n  \"tax\": 5,\n  \"parentCategoryId\": \"{{category_id}}\"\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/api/subcategories",
+            "host": ["{{base_url}}"],
+            "path": ["api", "subcategories"]
+          }
+        }
+      },
+      {
+        "name": "Create Item",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"Coca Cola\",\n  \"image\": \"https://example.com/image.jpg\",\n  \"description\": \"Chilled soft drink\",\n  \"taxApplicable\": true,\n  \"tax\": 5,\n  \"baseAmount\": 50,\n  \"discount\": 5,\n  \"parentCategoryId\": \"{{category_id}}\",\n  \"parentSubCategoryId\": \"{{subcategory_id}}\"\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/api/items",
+            "host": ["{{base_url}}"],
+            "path": ["api", "items"]
+          }
+        }
+      },
+      {
+        "name": "Search Items",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "{{base_url}}/api/items/search?name=Coca",
+            "host": ["{{base_url}}"],
+            "path": ["api", "items", "search"],
+            "query": [{ "key": "name", "value": "Coca" }]
+          }
+        }
+      }
+    ]
+  }
+  
